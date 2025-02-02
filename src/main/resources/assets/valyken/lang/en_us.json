@@ -1,6 +1,11 @@
 {
   "block.valyken.alexandrite_block": "Alexandrite Block",
+  "block.valyken.raw_alexandrite_block": "Raw Alexandrite Block",
+  "block.valyken.alexandrite_ore": "Alexandrite Ore",
+  "block.valyken.alexandrite_deepslate_ore": "Alexandrite Deepslate Ore",
   "item.valyken.alexandrite": "Alexandrite Gem",
+  "item.valyken.raw_alexandrite": "Raw Alexandrite",
+  "item.valyken.chisel": "Chisel",
   "valyken.alexandrite_item_tab_title": "Alexandrite Items",
   "valyken.alexandrite_block_tab_title": "Alexandrite Blocks"
 }

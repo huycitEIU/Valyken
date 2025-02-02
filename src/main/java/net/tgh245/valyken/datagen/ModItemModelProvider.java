@@ -4,6 +4,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 import net.tgh245.valyken.Valyken;
 import net.tgh245.valyken.item.ModItems;
 
@@ -16,8 +17,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(ModItems.ALEXANDRITE.get());
-        basicItem(ModItems.RAW_ALEXANDRITE.get());
-        basicItem(ModItems.ORE_DETECTOR.get());
+        for (RegistryObject<Item> item: ModItems.items) {
+            basicItem(item.get());
+        }
     }
 }

@@ -6,7 +6,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tgh245.valyken.Valyken;
+import net.tgh245.valyken.item.custom.ChiselItem;
 import net.tgh245.valyken.item.custom.OreDetector;
+
+import java.util.List;
 
 public class ModItems {
 
@@ -19,6 +22,15 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ORE_DETECTOR = ITEMS.register("ore_detector",
             () -> new OreDetector(new Item.Properties().durability(100)));
+    public static final RegistryObject<Item> CHISEL = ITEMS.register("chisel",
+            () -> new ChiselItem(new Item.Properties().durability(100)));
+
+    public static final List<RegistryObject<Item>> items = List.of(
+            RAW_ALEXANDRITE,
+            ORE_DETECTOR,
+            ALEXANDRITE,
+            CHISEL
+    );
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

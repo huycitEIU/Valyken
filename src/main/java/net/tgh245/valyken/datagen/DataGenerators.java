@@ -30,6 +30,8 @@ public class DataGenerators {
         gen.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
+        gen.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
+
         gen.addProvider(event.includeServer(), new ModItemModelProvider(output, helper));
         gen.addProvider(event.includeServer(), new ModBlockStateProvider(output, helper));
 

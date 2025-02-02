@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                                 output.accept(ModItems.ALEXANDRITE.get());
                                 output.accept(ModItems.RAW_ALEXANDRITE.get());
                                 output.accept(ModItems.ORE_DETECTOR.get());
+                                output.accept(ModItems.CHISEL.get());
                             })
                             .build());
     public static final RegistryObject<CreativeModeTab> ALEXANDRITE_BLOCK_TAB =
@@ -29,10 +30,13 @@ public class ModCreativeModeTabs {
                     () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.ALEXANDRITE_BLOCK.get()))
                             .withTabsBefore(ALEXANDRITE_ITEM_TAB.getId())
                             .title(Component.translatable(Valyken.MOD_ID + ".alexandrite_block_tab_title"))
-                            .displayItems((itemDisplayParaments, output) -> {
+                            .displayItems((itemDisplayParameters, output) -> {
 
                                 // display blocks in creative tab
                                 output.accept(ModBlocks.ALEXANDRITE_BLOCK.get());
+                                output.accept(ModBlocks.RAW_ALEXANDRITE_BLOCK.get());
+                                output.accept(ModBlocks.ALEXANDRITE_ORE.get());
+                                output.accept(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get());
                             })
                             .build());
     public static void register(IEventBus eventBus) {

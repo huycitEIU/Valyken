@@ -16,6 +16,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 import net.tgh245.valyken.block.ModBlocks;
+import net.tgh245.valyken.item.ModItems;
 
 import java.util.Set;
 
@@ -28,7 +29,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.ALEXANDRITE_BLOCK.get());
-
+        dropSelf(ModBlocks.RAW_ALEXANDRITE_BLOCK.get());
+        this.add(ModBlocks.ALEXANDRITE_ORE.get(),
+                block -> createOreDrop(ModBlocks.ALEXANDRITE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
+        this.add(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get(),
+                block -> createOreDrop(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
     }
 
 
