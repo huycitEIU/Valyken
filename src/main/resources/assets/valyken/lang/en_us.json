@@ -3,9 +3,12 @@
   "block.valyken.raw_alexandrite_block": "Raw Alexandrite Block",
   "block.valyken.alexandrite_ore": "Alexandrite Ore",
   "block.valyken.alexandrite_deepslate_ore": "Alexandrite Deepslate Ore",
+  "block.valyken.magic_block": "Magic Block",
   "item.valyken.alexandrite": "Alexandrite Gem",
   "item.valyken.raw_alexandrite": "Raw Alexandrite",
   "item.valyken.chisel": "Chisel",
+  "item.valyken.kohlrabi": "Kohlrabi",
+  "item.valyken.aurora_ashes": "Aurora Ashes",
   "valyken.alexandrite_item_tab_title": "Alexandrite Items",
   "valyken.alexandrite_block_tab_title": "Alexandrite Blocks"
 }

@@ -13,6 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tgh245.valyken.Valyken;
+import net.tgh245.valyken.block.custom.MagicBlock;
 import net.tgh245.valyken.item.ModItems;
 
 import java.util.ArrayList;
@@ -49,11 +50,24 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
             ));
 
+    public static final RegistryObject<Block> MAGIC_BLOCK = registryBlock("magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()));
 
     public static final List<RegistryObject<Block>> blocks = List.of(ALEXANDRITE_BLOCK,
             RAW_ALEXANDRITE_BLOCK,
             ALEXANDRITE_ORE,
-            ALEXANDRITE_DEEPSLATE_ORE
+            ALEXANDRITE_DEEPSLATE_ORE,
+            MAGIC_BLOCK
+    );
+
+    public static final List<RegistryObject<Block>> mineableList = List.of(
+            ALEXANDRITE_BLOCK,
+            MAGIC_BLOCK,
+            RAW_ALEXANDRITE_BLOCK,
+            ALEXANDRITE_DEEPSLATE_ORE,
+            ALEXANDRITE_ORE
     );
 
     private static <T extends Block> RegistryObject<T> registryBlock(final String name, Supplier<T> block) {
