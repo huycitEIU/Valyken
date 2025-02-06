@@ -15,8 +15,6 @@ import net.tgh245.valyken.Valyken;
 import net.tgh245.valyken.block.custom.MagicBlock;
 import net.tgh245.valyken.item.ModItems;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Supplier;
 
 public class ModBlocks
@@ -78,9 +76,6 @@ public class ModBlocks
             .strength(2f).requiresCorrectToolForDrops( ))
     );
 
-    public static final List<? extends Block> blocksTab = List.of(
-
-    );
 
 
     private static < T extends Block > RegistryObject< T > registryBlock(final String name, Supplier< T > block)

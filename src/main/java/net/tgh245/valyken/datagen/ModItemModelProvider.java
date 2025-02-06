@@ -4,7 +4,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -32,11 +31,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlockItem(ModBlocks.ALEXANDRITE_DOOR);
     }
 
-    private ItemModelBuilder simpleBlockItem(RegistryObject< ? extends Block> item)
+    private void simpleBlockItem(RegistryObject< ? extends Block> item)
     {
-        return withExistingParent(item.getId().getPath(),
-                ResourceLocation.parse("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(Valyken.MOD_ID, "item/" + item.getId().getPath()));
+        withExistingParent(item.getId( )
+                .getPath( ), ResourceLocation.parse("item/generated")
+        ).texture("layer0", ResourceLocation.fromNamespaceAndPath(Valyken.MOD_ID, "item/" + item.getId( ).getPath( )));
     }
 
     public void buttonItem(RegistryObject< ? extends Block > block, RegistryObject< Block> baseBlock)

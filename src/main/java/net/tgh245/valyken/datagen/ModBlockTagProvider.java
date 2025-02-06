@@ -3,13 +3,13 @@ package net.tgh245.valyken.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.tgh245.valyken.Valyken;
 import net.tgh245.valyken.block.ModBlocks;
 import net.tgh245.valyken.util.ModTags;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,7 +22,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider pProvider) {
+    protected void addTags(HolderLookup.@NotNull Provider pProvider) {
         tag(ModTags.Blocks.ORE_DETECTOR)
                 .addTag(Tags.Blocks.ORES)
                 .add(ModBlocks.ALEXANDRITE_ORE.get())
