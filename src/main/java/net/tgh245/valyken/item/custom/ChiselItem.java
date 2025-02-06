@@ -1,6 +1,5 @@
 package net.tgh245.valyken.item.custom;
 
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -11,6 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.tgh245.valyken.block.ModBlocks;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -28,7 +28,7 @@ public class ChiselItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext pContext) {
+    public @NotNull InteractionResult useOn(UseOnContext pContext) {
         Level level = pContext.getLevel();
         Block clickedBlock = level.getBlockState(pContext.getClickedPos()).getBlock();
 
