@@ -3,12 +3,10 @@ package net.tgh245.valyken.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
 import net.tgh245.valyken.Valyken;
 import net.tgh245.valyken.block.ModBlocks;
 import net.tgh245.valyken.util.ModTags;
@@ -31,9 +29,24 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get())
         ;
 
-        for (RegistryObject<Block> block: ModBlocks.mineableList) {
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block.get());
-        }
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.ALEXANDRITE_ORE.get())
+                .add(ModBlocks.ALEXANDRITE_BLOCK.get())
+                .add(ModBlocks.ALEXANDRITE_DOOR.get())
+                .add(ModBlocks.ALEXANDRITE_BUTTON.get())
+                .add(ModBlocks.ALEXANDRITE_FENCE.get())
+                .add(ModBlocks.ALEXANDRITE_SLAB.get())
+                .add(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get())
+                .add(ModBlocks.ALEXANDRITE_FENCE_GATE.get())
+                .add(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get())
+                .add(ModBlocks.ALEXANDRITE_TRAP_DOOR.get())
+                .add(ModBlocks.ALEXANDRITE_WALL.get())
+                .add(ModBlocks.ALEXANDRITE_STAIRS.get())
+                .add(ModBlocks.RAW_ALEXANDRITE_BLOCK.get())
+                .add(ModBlocks.MAGIC_BLOCK.get())
+        ;
+
+
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.MAGIC_BLOCK.get());
@@ -45,5 +58,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ALEXANDRITE_ORE.get())
         ;
 
+        tag(BlockTags.FENCES).add(ModBlocks.ALEXANDRITE_FENCE.get());
+        tag(BlockTags.FENCE_GATES).add(ModBlocks.ALEXANDRITE_FENCE_GATE.get());
+        tag(BlockTags.WALLS).add(ModBlocks.ALEXANDRITE_WALL.get());
     }
 }
