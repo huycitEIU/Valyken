@@ -12,23 +12,27 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.tgh245.valyken.util.ModTags;
 import org.jetbrains.annotations.NotNull;
 
-public class OreDetector extends Item {
-    public OreDetector(Properties pProperties) {
+public class OreDetector extends Item
+{
+    public OreDetector(Properties pProperties)
+    {
         super(pProperties);
     }
 
     @Override
-    public @NotNull InteractionResult useOn(UseOnContext pContext) {
-        if (!pContext.getLevel().isClientSide) {
+    public @NotNull InteractionResult useOn(UseOnContext pContext)
+    {
+        if (!pContext.getLevel( ).isClientSide) {
             boolean found = false;
-            BlockPos pos = pContext.getClickedPos();
-            Player player = pContext.getPlayer();
+            BlockPos pos = pContext.getClickedPos( );
+            Player player = pContext.getPlayer( );
             for (int i = 0; i < 64; i++) {
-                BlockState state = pContext.getLevel().getBlockState(pos.below(i));
+                BlockState state = pContext.getLevel( ).getBlockState(pos.below(i));
                 if (isOre(state)) {
                     found = true;
                     assert player != null;
-                    player.sendSystemMessage(Component.literal(I18n.get(state.getBlock().getDescriptionId()) + " at y: " + pos.below(i).getY()));
+                    player.sendSystemMessage(Component.literal(
+                            I18n.get(state.getBlock( ).getDescriptionId( )) + " at y: " + pos.below(i).getY( )));
                     break;
                 }
             }
@@ -38,15 +42,15 @@ public class OreDetector extends Item {
                 player.sendSystemMessage(Component.literal(I18n.get("No ore!")));
             }
 
-            pContext.getItemInHand().hurtAndBreak(1,
-                    pContext.getPlayer(),
-                    LivingEntity.getSlotForHand(pContext.getHand()));
+            pContext.getItemInHand( )
+                    .hurtAndBreak(1, pContext.getPlayer( ), LivingEntity.getSlotForHand(pContext.getHand( )));
         }
 
         return InteractionResult.SUCCESS;
     }
 
-    private boolean isOre(BlockState state) {
+    private boolean isOre(BlockState state)
+    {
         return state.is(ModTags.Blocks.ORE_DETECTOR);
     }
 

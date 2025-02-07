@@ -20,46 +20,47 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class ModBlockLootTableProvider extends BlockLootSubProvider {
+public class ModBlockLootTableProvider extends BlockLootSubProvider
+{
 
-    protected ModBlockLootTableProvider(HolderLookup.Provider pRegistries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), pRegistries);
+    protected ModBlockLootTableProvider(HolderLookup.Provider pRegistries)
+    {
+        super(Set.of( ), FeatureFlags.REGISTRY.allFlags( ), pRegistries);
     }
 
     @Override
-    protected void generate() {
-        dropSelf(ModBlocks.ALEXANDRITE_BLOCK.get());
-        dropSelf(ModBlocks.RAW_ALEXANDRITE_BLOCK.get());
-        dropSelf(ModBlocks.MAGIC_BLOCK.get());
-        dropSelf(ModBlocks.ALEXANDRITE_STAIRS.get());
-        dropSelf(ModBlocks.ALEXANDRITE_SLAB.get());
-        dropSelf(ModBlocks.ALEXANDRITE_FENCE.get());
-        dropSelf(ModBlocks.ALEXANDRITE_FENCE_GATE.get());
-        dropSelf(ModBlocks.ALEXANDRITE_WALL.get());
-        dropSelf(ModBlocks.ALEXANDRITE_TRAP_DOOR.get());
-        dropSelf(ModBlocks.ALEXANDRITE_BUTTON.get());
-        dropSelf(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get());
-        dropSelf(ModBlocks.ALEXANDRITE_DOOR.get());
-        this.add(ModBlocks.ALEXANDRITE_ORE.get(),
-                block -> createOreDrop(ModBlocks.ALEXANDRITE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
-        this.add(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get(),
-                block -> createOreDrop(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get(), ModItems.RAW_ALEXANDRITE.get()));
+    protected void generate( )
+    {
+        dropSelf(ModBlocks.ALEXANDRITE_BLOCK.get( ));
+        dropSelf(ModBlocks.RAW_ALEXANDRITE_BLOCK.get( ));
+        dropSelf(ModBlocks.MAGIC_BLOCK.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_STAIRS.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_SLAB.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_FENCE.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_FENCE_GATE.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_WALL.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_TRAP_DOOR.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_BUTTON.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_PRESSURE_PLATE.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_DOOR.get( ));
+        dropSelf(ModBlocks.ALEXANDRITE_LAMP.get( ));
+        this.add(ModBlocks.ALEXANDRITE_ORE.get( ), block -> createOreDrop(ModBlocks.ALEXANDRITE_ORE.get( ), ModItems.RAW_ALEXANDRITE.get( )));
+        this.add(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get( ), block -> createOreDrop(ModBlocks.ALEXANDRITE_DEEPSLATE_ORE.get( ), ModItems.RAW_ALEXANDRITE.get( )));
     }
 
 
     @Override
-    protected @NotNull Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+    protected @NotNull Iterable< Block > getKnownBlocks( )
+    {
+        return ModBlocks.BLOCKS.getEntries( ).stream( ).map(RegistryObject::get)::iterator;
     }
 
-    protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item pItem, float minDrops, float maxDrops) {
-        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createSilkTouchDispatchTable(
-                pBlock, this.applyExplosionDecay(
-                        pBlock,
-                        LootItem.lootTableItem(pItem)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-                                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+    protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item pItem, float minDrops, float maxDrops)
+    {
+        HolderLookup.RegistryLookup< Enchantment > registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return this.createSilkTouchDispatchTable(pBlock, this.applyExplosionDecay(pBlock, LootItem.lootTableItem(pItem)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
+                        .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
                 )
         );
     }

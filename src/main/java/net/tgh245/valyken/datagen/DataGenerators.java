@@ -16,26 +16,27 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(modid = Valyken.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class DataGenerators {
+@Mod.EventBusSubscriber (modid = Valyken.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class DataGenerators
+{
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
-        DataGenerator gen = event.getGenerator();
-        PackOutput output = gen.getPackOutput();
-        ExistingFileHelper helper = event.getExistingFileHelper();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+    public static void gatherData(GatherDataEvent event)
+    {
+        DataGenerator gen = event.getGenerator( );
+        PackOutput output = gen.getPackOutput( );
+        ExistingFileHelper helper = event.getExistingFileHelper( );
+        CompletableFuture< HolderLookup.Provider > lookupProvider = event.getLookupProvider( );
 
-        gen.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
-                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+        gen.addProvider(event.includeServer( ), new LootTableProvider(output, Collections.emptySet( ), List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
-        gen.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
+        gen.addProvider(event.includeServer( ), new ModRecipeProvider(output, lookupProvider));
 
-        gen.addProvider(event.includeServer(), new ModItemModelProvider(output, helper));
-        gen.addProvider(event.includeServer(), new ModBlockStateProvider(output, helper));
+        gen.addProvider(event.includeServer( ), new ModItemModelProvider(output, helper));
+        gen.addProvider(event.includeServer( ), new ModBlockStateProvider(output, helper));
 
         BlockTagsProvider blockTagsProvider = new ModBlockTagProvider(output, lookupProvider, helper);
-        gen.addProvider(event.includeServer(), blockTagsProvider);
-        gen.addProvider(event.includeServer(), new ModItemTagProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), helper));
+        gen.addProvider(event.includeServer( ), blockTagsProvider);
+        gen.addProvider(event.includeServer( ), new ModItemTagProvider(output, lookupProvider, blockTagsProvider.contentsGetter( ), helper));
 
     }
 }

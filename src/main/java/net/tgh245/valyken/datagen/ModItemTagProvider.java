@@ -11,18 +11,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModItemTagProvider extends ItemTagsProvider {
+public class ModItemTagProvider extends ItemTagsProvider
+{
 
 
-    public ModItemTagProvider(PackOutput packOutput,
-                              CompletableFuture<HolderLookup.Provider> completableFuture,
-                              CompletableFuture<TagLookup<Block>> lookupCompletableFuture,
-                              @Nullable ExistingFileHelper existingFileHelper) {
+    public ModItemTagProvider(PackOutput packOutput, CompletableFuture< HolderLookup.Provider > completableFuture, CompletableFuture< TagLookup< Block > > lookupCompletableFuture, @Nullable ExistingFileHelper existingFileHelper)
+    {
         super(packOutput, completableFuture, lookupCompletableFuture, Valyken.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider pProvider) {
+    protected void addTags(HolderLookup.@NotNull Provider pProvider)
+    {
 
     }
 }

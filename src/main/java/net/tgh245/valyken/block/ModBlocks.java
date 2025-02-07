@@ -12,6 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tgh245.valyken.Valyken;
+import net.tgh245.valyken.block.custom.AlexandriteLampBlock;
 import net.tgh245.valyken.block.custom.MagicBlock;
 import net.tgh245.valyken.item.ModItems;
 
@@ -25,8 +26,7 @@ public class ModBlocks
     public static final RegistryObject< Block > ALEXANDRITE_BLOCK = registryBlock("alexandrite_block", ( ) -> new Block(BlockBehaviour.Properties.of( )
             .strength(4f).requiresCorrectToolForDrops( ).sound(SoundType.AMETHYST))
     );
-    public static final RegistryObject< StairBlock > ALEXANDRITE_STAIRS = registryBlock("alexandrite_stairs",
-            ( ) -> new StairBlock(ModBlocks.ALEXANDRITE_BLOCK.get( )
+    public static final RegistryObject< StairBlock > ALEXANDRITE_STAIRS = registryBlock("alexandrite_stairs", ( ) -> new StairBlock(ModBlocks.ALEXANDRITE_BLOCK.get( )
                     .defaultBlockState( ), BlockBehaviour.Properties.of( ).strength(4f).requiresCorrectToolForDrops( )
             )
     );
@@ -52,19 +52,18 @@ public class ModBlocks
             .strength(3f).requiresCorrectToolForDrops( ))
     );
     public static final RegistryObject< DoorBlock > ALEXANDRITE_DOOR = registryBlock("alexandrite_door", ( ) -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of( )
-                    .strength(3f).requiresCorrectToolForDrops( ).noCollission( )
+                    .strength(3f).requiresCorrectToolForDrops( )
             )
     );
     public static final RegistryObject< TrapDoorBlock > ALEXANDRITE_TRAP_DOOR = registryBlock("alexandrite_trap_door", ( ) -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of( )
-                    .strength(3f).requiresCorrectToolForDrops( ).noCollission( )
+                    .strength(3f).requiresCorrectToolForDrops( )
             )
     );
     public static final RegistryObject< Block > RAW_ALEXANDRITE_BLOCK = registryBlock("raw_alexandrite_block", ( ) -> new Block(BlockBehaviour.Properties.of( )
             .sound(SoundType.AMETHYST).strength(3f).requiresCorrectToolForDrops( ))
     );
 
-    public static final RegistryObject< Block > ALEXANDRITE_ORE = registryBlock("alexandrite_ore",
-            ( ) -> new DropExperienceBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of( )
+    public static final RegistryObject< Block > ALEXANDRITE_ORE = registryBlock("alexandrite_ore", ( ) -> new DropExperienceBlock(UniformInt.of(2, 4), BlockBehaviour.Properties.of( )
                     .strength(4f).requiresCorrectToolForDrops( )
             )
     );
@@ -76,7 +75,10 @@ public class ModBlocks
             .strength(2f).requiresCorrectToolForDrops( ))
     );
 
-
+    public static final RegistryObject< Block > ALEXANDRITE_LAMP = registryBlock("alexandrite_lamp", ( ) -> new AlexandriteLampBlock(BlockBehaviour.Properties.of( )
+            .strength(3f).requiresCorrectToolForDrops( )
+            .lightLevel((state) -> state.getValue(AlexandriteLampBlock.CLICKED) ? 15 : 0))
+    );
 
     private static < T extends Block > RegistryObject< T > registryBlock(final String name, Supplier< T > block)
     {

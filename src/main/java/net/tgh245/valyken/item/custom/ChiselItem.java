@@ -14,35 +14,31 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class ChiselItem extends Item {
-    private static final Map<Block, Block> CHISEL_BLOCKS =
-            Map.of(
-                    Blocks.STONE, Blocks.STONE_BRICKS,
-                    Blocks.END_STONE, Blocks.END_STONE_BRICKS,
-                    Blocks.IRON_BLOCK, Blocks.DIAMOND_BLOCK,
-                    Blocks.DIRT, ModBlocks.ALEXANDRITE_BLOCK.get()
-            );
+public class ChiselItem extends Item
+{
+    private static final Map< Block, Block > CHISEL_BLOCKS = Map.of(Blocks.STONE, Blocks.STONE_BRICKS, Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.IRON_BLOCK, Blocks.DIAMOND_BLOCK, Blocks.DIRT, ModBlocks.ALEXANDRITE_BLOCK.get( ));
 
-    public ChiselItem(Properties pProperties) {
+    public ChiselItem(Properties pProperties)
+    {
         super(pProperties);
     }
 
     @Override
-    public @NotNull InteractionResult useOn(UseOnContext pContext) {
-        Level level = pContext.getLevel();
-        Block clickedBlock = level.getBlockState(pContext.getClickedPos()).getBlock();
+    public @NotNull InteractionResult useOn(UseOnContext pContext)
+    {
+        Level level = pContext.getLevel( );
+        Block clickedBlock = level.getBlockState(pContext.getClickedPos( )).getBlock( );
 
         if (CHISEL_BLOCKS.containsKey(clickedBlock)) {
-            if (!level.isClientSide()) {
-                level.setBlockAndUpdate(pContext.getClickedPos(),
-                        CHISEL_BLOCKS.get(clickedBlock).defaultBlockState());
+            if (!level.isClientSide( )) {
+                level.setBlockAndUpdate(pContext.getClickedPos( ), CHISEL_BLOCKS.get(clickedBlock)
+                        .defaultBlockState( )
+                );
 
-                pContext.getItemInHand().hurtAndBreak(1,
-                        pContext.getPlayer(),
-                        LivingEntity.getSlotForHand(pContext.getHand()));
+                pContext.getItemInHand( )
+                        .hurtAndBreak(1, pContext.getPlayer( ), LivingEntity.getSlotForHand(pContext.getHand( )));
 
-                level.playSound(null, pContext.getClickedPos(),
-                        SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(null, pContext.getClickedPos( ), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
         }
 
