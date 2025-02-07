@@ -17,14 +17,13 @@ public class AlexandriteLampBlock extends Block
     public AlexandriteLampBlock(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(CLICKED, false));
+        this.registerDefaultState(this.defaultBlockState( ).setValue(CLICKED, false));
     }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult)
     {
-        if (!pLevel.isClientSide)
-        {
+        if (!pLevel.isClientSide) {
             boolean currentState = pState.getValue(CLICKED);
             pLevel.setBlockAndUpdate(pPos, pState.setValue(CLICKED, !currentState));
         }
