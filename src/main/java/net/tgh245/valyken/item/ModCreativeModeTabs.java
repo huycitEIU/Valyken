@@ -20,7 +20,18 @@ public class ModCreativeModeTabs
             .title(Component.translatable(Valyken.MOD_ID + ".alexandrite_item_tab_title"))
             .displayItems((itemDisplayParamenters, output) -> {
                 for (RegistryObject< Item > item : ModItems.items) {
-                    output.accept(item.get( ));
+                    output.accept(ModItems.CHISEL.get( ));
+                    output.accept(ModItems.ALEXANDRITE.get( ));
+                    output.accept(ModItems.RAW_ALEXANDRITE.get( ));
+                    output.accept(ModItems.ORE_DETECTOR.get( ));
+                    output.accept(ModItems.KOHLRABI.get( ));
+                    output.accept(ModItems.AURORA_ASHES.get( ));
+                    output.accept(ModItems.ALEXANDRITE_PICKAXE.get( ));
+                    output.accept(ModItems.ALEXANDRITE_SWORD.get( ));
+                    output.accept(ModItems.ALEXANDRITE_AXE.get( ));
+                    output.accept(ModItems.ALEXANDRITE_SHOVEL.get( ));
+                    output.accept(ModItems.ALEXANDRITE_HOE.get( ));
+
                 }
             }).build( )
     );

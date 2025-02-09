@@ -14,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tgh245.valyken.block.ModBlocks;
+import net.tgh245.valyken.component.ModDataComponentTypes;
 import net.tgh245.valyken.item.ModCreativeModeTabs;
 import net.tgh245.valyken.item.ModItems;
 import org.slf4j.Logger;
@@ -39,6 +40,7 @@ public class Valyken
 
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModDataComponentTypes.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

@@ -1,17 +1,23 @@
 package net.tgh245.valyken.item.custom;
 
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.tgh245.valyken.block.ModBlocks;
+import net.tgh245.valyken.component.ModDataComponentTypes;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Map;
 
 public class ChiselItem extends Item
@@ -39,10 +45,27 @@ public class ChiselItem extends Item
                         .hurtAndBreak(1, pContext.getPlayer( ), LivingEntity.getSlotForHand(pContext.getHand( )));
 
                 level.playSound(null, pContext.getClickedPos( ), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+                pContext.getItemInHand().set(ModDataComponentTypes.COORDINATES.get(), pContext.getClickedPos());
             }
         }
 
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List< Component > pTooltipComponents, TooltipFlag pTooltipFlag)
+    {
+        if (Screen.hasShiftDown( )) {
+            pTooltipComponents.add((Component.translatable("tooltip.valyken.chisel_item.shift_down")));
+        } else {
+            pTooltipComponents.add(Component.translatable("tooltip.valyken.chisel_item.default"));
+        }
+
+        if (pStack.get(ModDataComponentTypes.COORDINATES.get()) != null) {
+            pTooltipComponents.add(Component.literal("Last Block changed at: " + pStack.get(ModDataComponentTypes.COORDINATES.get())));
+        }
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }
 

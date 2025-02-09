@@ -12,6 +12,8 @@ public class ModTags {
     public static class Blocks {
 
         public static final TagKey<Block> ORE_DETECTOR = tag("ore_detector");
+        public static final TagKey<Block> NEEDS_ALEXANDRITE_TOOL = tag("needs_alexandrite_tool");
+        public static final TagKey<Block> INCORRECT_FOR_ALEXANDRITE_TOOL = tag("incorrect_for_alexandrite_tool");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Valyken.MOD_ID, name));
